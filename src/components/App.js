@@ -8,7 +8,7 @@ import hogs from '../porkers_data';
 class App extends React.Component {
 
     state = {
-        hogs: hogs,
+        hogs: hogs, 
         filteredHogs: hogs
     }
 
@@ -28,11 +28,22 @@ class App extends React.Component {
         this.setState({ filteredHogs: resultsHogs})
     }
 
+    handleChangeWeight = (e) => {
+        console.log(e.target.value)
+        let resultsHogs = this.state.hogs.filter((hog) => {
+            const weight = (hog['weight as a ratio of hog to LG - 24.7 Cu. Ft. French Door Refrigerator with Thru-the-Door Ice and Water']).toString()
+            console.log(weight)
+            if (weight === e.target.value)
+                return true
+        })
+        this.setState({ filteredHogs: resultsHogs })
+    }
+
     render() {
         return (
             <div className="App">
                 <Nav />
-                <Filter handleChange={this.handleChange}/>
+                <Filter handleChange={this.handleChange} handleChangeWeight={this.handleChangeWeight}/>
                 {this.renderDetails}
                 <HogList hogs={this.state.filteredHogs} renderDetails={this.renderDetails} />
             </div>
