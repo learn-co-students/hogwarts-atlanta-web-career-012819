@@ -5,7 +5,15 @@ class Filter extends Component {
         return (
             <div className="ui search">
                 <input onChange={this.props.handleChange} name='search' className="prompt" type="text" placeholder="Search Hogs..." />
-                <input onChange={this.props.handleChangeWeight} name='search' className="prompt" type="text" placeholder="Search Hogs By Weight..." />
+                <br />
+                <select onChange={this.props.changeSort}>
+                    <option value='none'>None</option>
+                    <option value='name'>Name</option>
+                    <option value='weight'>Weight</option>
+                    <option value='greased'>Greased</option>
+                    <option value='not greased'>Not Greased</option>
+                </select>
+                <br />
             </div>
         )
     }

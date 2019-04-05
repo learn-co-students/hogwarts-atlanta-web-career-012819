@@ -12,38 +12,47 @@ class App extends React.Component {
         filteredHogs: hogs
     }
 
-    // renderDetails = (hog) => {
-    //     console.log("clicked")
-    //     console.log(hog)
-        
-    // }
+    changeSort = (e) => {
+        let selected = e.target.value
 
-    handleChange = (e) => {
-        console.log(e.target.value)
-        let resultsHogs = this.state.hogs.filter((hog) => {
-            if(hog.name.toLowerCase().includes(e.target.value))
-                return true
-        })
-        
-        this.setState({ filteredHogs: resultsHogs})
-    }
+        if (selected === 'name') {
+            let newHogs = [...this.state.hogs].sort((HogA, HogB) => {
+                let  textA = HogA.name
+                let  textB = HogB.name
+                return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+            })
+            this.setState({ filteredHogs: newHogs })
 
-    handleChangeWeight = (e) => {
-        console.log(e.target.value)
-        let resultsHogs = this.state.hogs.filter((hog) => {
-            const weight = (hog['weight as a ratio of hog to LG - 24.7 Cu. Ft. French Door Refrigerator with Thru-the-Door Ice and Water']).toString()
-            console.log(weight)
-            if (weight === e.target.value)
-                return true
-        })
-        this.setState({ filteredHogs: resultsHogs })
+        } else if (selected === 'weight') {
+            let newHogs = [...this.state.hogs].sort((HogA, HogB) => {
+                let textA = (HogA.hog['weight as a ratio of hog to LG - 24.7 Cu. Ft. French Door Refrigerator with Thru-the-Door Ice and Water']).toString()
+                let textB = (HogB.hog['weight as a ratio of hog to LG - 24.7 Cu. Ft. French Door Refrigerator with Thru-the-Door Ice and Water']).toString()
+                return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+            })
+            this.setState({ filteredHogs: newHogs })
+
+        } else if (selected === 'greased') {
+            let newHogs = [...this.state.hogs].filter(hog => {
+                return hog.greased
+            })
+            this.setState({ filteredHogs: newHogs })
+
+        } else if (selected === 'not greased') {
+            let newHogs = [...this.state.hogs].filter(hog => {
+                return !hog.greased
+            })
+            this.setState({ filteredHogs: newHogs })
+
+        } else { 
+            return [...this.state.hogs]
+        }
     }
 
     render() {
         return (
             <div className="App">
                 <Nav />
-                <Filter handleChange={this.handleChange} handleChangeWeight={this.handleChangeWeight}/>
+                <Filter handleChange={this.handleChange} changeSort={this.changeSort} />
                 {this.renderDetails}
                 <HogList hogs={this.state.filteredHogs} renderDetails={this.renderDetails} />
             </div>
@@ -52,3 +61,13 @@ class App extends React.Component {
 }
 
 export default App;
+
+    // handleChange = (e) => {
+    //     console.log(e.target.value)
+    //     let resultsHogs = this.state.hogs.filter((hog) => {
+    //         if(hog.name.toLowerCase().includes(e.target.value))
+    //             return true
+    //     })
+
+    //     this.setState({ filteredHogs: resultsHogs})
+    // }
