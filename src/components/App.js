@@ -13,11 +13,11 @@ class App extends Component {
     return (
       <div className="App">
           < Nav />
-          <div className="indexWrapper">
+          <div className="ui container">
             {/* <Filters /> */}
-            <ul>
-              {this.state.hogs.map((hog)=><li><HogCard hog={hog} /></li>)}
-            </ul>
+            <div className="ui four column grid">
+              {this.state.hogs.map((hog)=><div className="column"><HogCard hog={hog} /></div>)}
+            </div>
           </div>  
       </div>
     )
