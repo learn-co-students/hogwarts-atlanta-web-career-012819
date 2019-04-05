@@ -13,7 +13,7 @@ export default function Filter(props) {
         </div>
         <div className="column" >
             <div className="">
-                <label>Show Greased pigs?</label>
+                <label>Hide Greased pigs?</label>
                 <input type="checkbox" name="greased" value="true" onChange={props.greasedAction}/>
             </div>
         </div>

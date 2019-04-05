@@ -8,7 +8,7 @@ import Filter from './Filter'
 class App extends Component {
   state = {
                 hogs: hogs,
-                showGreased: true
+                showGreased: false
               }
   
   handleSort = (e) => {
@@ -28,12 +28,19 @@ class App extends Component {
 
   handleShowGreased = (e) =>{
     console.log('e.target.value', e.target.value)
-    this.setState({showGreased: !this.state.showGreased})
+    const showGreased = !this.state.showGreased
+    if(!showGreased){
+      this.setState({
+        showGreased,
+        hogs: hogs
+      })
+    }else{
+      this.setState({
+        showGreased,
+        hogs: this.filterGreased()
+      })
+    }
   }
-  // filterGreased(arrayToFilter){
-  //   let newArray = arrayToFilter.slice()
-
-  // }
   sortByName(arrayToSort){
     let newArray = arrayToSort.slice()
     return newArray.sort((ele1, ele2)=>{
@@ -57,6 +64,14 @@ class App extends Component {
         return 0
     })
   }
+  filterGreased(){
+    //Only return non-greased hogs greased===false
+    return this.state.hogs.filter((hog) => !hog.greased)
+    //this.setState({hogs: newHogs})
+  }
+  hogCards(){
+    return this.state.hogs.map(hog => <HogCard hog={hog} />)
+  }
   render() {
     return (
       <div className="App">
@@ -67,7 +82,10 @@ class App extends Component {
               <Filter sortAction={this.handleSort} greasedAction={this.handleShowGreased}/>
             </div>
             <div className="ui four column grid">
-              {this.state.hogs.map((hog)=><div className="column"><HogCard hog={hog} /></div>)}
+              {/* {this.state.hogs.map((hog)=><div className="column"><HogCard hog={hog} /></div>)} */}
+              
+                {this.hogCards()}
+              
             </div>
           </div>  
       </div>
