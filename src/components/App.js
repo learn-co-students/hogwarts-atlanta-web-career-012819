@@ -8,7 +8,7 @@ import Filter from './Filter'
 class App extends Component {
   state = {
                 hogs: hogs,
-                sort_by: "none"
+                showGreased: true
               }
   
   handleSort = (e) => {
@@ -25,6 +25,15 @@ class App extends Component {
       this.setState({hogs:hogs})
 
   }
+
+  handleShowGreased = (e) =>{
+    console.log('e.target.value', e.target.value)
+    this.setState({showGreased: !this.state.showGreased})
+  }
+  // filterGreased(arrayToFilter){
+  //   let newArray = arrayToFilter.slice()
+
+  // }
   sortByName(arrayToSort){
     let newArray = arrayToSort.slice()
     return newArray.sort((ele1, ele2)=>{
@@ -55,7 +64,7 @@ class App extends Component {
           <div className="ui container">
               
             <div className="ui two column grid">
-              <Filter sortAction={this.handleSort}/>
+              <Filter sortAction={this.handleSort} greasedAction={this.handleShowGreased}/>
             </div>
             <div className="ui four column grid">
               {this.state.hogs.map((hog)=><div className="column"><HogCard hog={hog} /></div>)}

@@ -12,9 +12,9 @@ export default function Filter(props) {
             </select>
         </div>
         <div className="column" >
-            <div className="ui checkbox">
+            <div className="">
                 <label>Show Greased pigs?</label>
-                <input type="checkbox" name="greased" value="" />
+                <input type="checkbox" name="greased" value="true" onChange={props.greasedAction}/>
             </div>
         </div>
     </div>
