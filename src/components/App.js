@@ -25,8 +25,8 @@ class App extends React.Component {
 
         } else if (selected === 'weight') {
             let newHogs = [...this.state.hogs].sort((HogA, HogB) => {
-                let textA = (HogA.hog['weight as a ratio of hog to LG - 24.7 Cu. Ft. French Door Refrigerator with Thru-the-Door Ice and Water']).toString()
-                let textB = (HogB.hog['weight as a ratio of hog to LG - 24.7 Cu. Ft. French Door Refrigerator with Thru-the-Door Ice and Water']).toString()
+                let textA = HogA['weight as a ratio of hog to LG - 24.7 Cu. Ft. French Door Refrigerator with Thru-the-Door Ice and Water']
+                let textB = HogB['weight as a ratio of hog to LG - 24.7 Cu. Ft. French Door Refrigerator with Thru-the-Door Ice and Water']
                 return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
             })
             this.setState({ filteredHogs: newHogs })
