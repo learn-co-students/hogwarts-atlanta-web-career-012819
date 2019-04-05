@@ -14,12 +14,12 @@ class App extends Component {
   handleSort = (e) => {
     const sortMethod = e.target.value
     if(sortMethod === "name")
-      this.setState((state)=>{
-        return {hogs: this.sortByName(state.hogs)}
+      this.setState({
+        hogs: this.sortByName(this.state.hogs)
       })
     else if (sortMethod === "weight")
-      this.setState((state)=>{
-        return {hogs: this.sortByWeight(state.hogs)}
+      this.setState({
+        hogs: this.sortByWeight(this.state.hogs)
       })
     else
       this.setState({hogs:hogs})
