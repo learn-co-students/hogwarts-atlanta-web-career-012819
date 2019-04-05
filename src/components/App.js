@@ -44,7 +44,7 @@ class App extends React.Component {
             this.setState({ filteredHogs: newHogs })
 
         } else { 
-            return [...this.state.hogs]
+            this.setState({ filteredHogs: this.state.hogs })
         }
     }
 
@@ -61,13 +61,3 @@ class App extends React.Component {
 }
 
 export default App;
-
-    // handleChange = (e) => {
-    //     console.log(e.target.value)
-    //     let resultsHogs = this.state.hogs.filter((hog) => {
-    //         if(hog.name.toLowerCase().includes(e.target.value))
-    //             return true
-    //     })
-
-    //     this.setState({ filteredHogs: resultsHogs})
-    // }
