@@ -52,7 +52,7 @@ class App extends React.Component {
         return (
             <div className="App">
                 <Nav />
-                <Filter handleChange={this.handleChange} changeSort={this.changeSort} />
+                <Filter changeSort={this.changeSort} />
                 {this.renderDetails}
                 <HogList hogs={this.state.filteredHogs} renderDetails={this.renderDetails} />
             </div>

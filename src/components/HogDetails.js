@@ -7,11 +7,12 @@ class HogDetails extends Component {
         const weight = this.props.hog['weight as a ratio of hog to LG - 24.7 Cu. Ft. French Door Refrigerator with Thru-the-Door Ice and Water']
         const medal = this.props.hog['highest medal achieved']
         return (
-            <div>
+            <div className="container">
                 <p>{this.props.hog.specialty}</p>
                 <p>Weight Ratio: {weight}</p>
                 <p>{this.props.hog.greased ? "Hog is greased!" : "Hog is not greased!"}</p>
                 <p>Highest Medal Achieved: {medal}</p>
+                <button onClick={this.handleClickHide}>Hide Hog</button>
             </div>
         )
     }
