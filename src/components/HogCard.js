@@ -3,7 +3,7 @@ import React from 'react'
 export default function HogCard(props) {
     const {name, medal, specialty, greased, weight, img} = props.hog
     console.log('img', img)
-    let hogImg = require(`${img}`)
+    const hogImg = require(`../hog-imgs/${img}`)
   return (
     <div className="pigTile">
         <div className="image">

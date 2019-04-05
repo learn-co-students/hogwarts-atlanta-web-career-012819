@@ -5,7 +5,7 @@ const hogs = [
     greased: false,
     'weight': 2.0,
     'medal': 'bronze',
-    img: "../hog-imgs/mudblood.jpg"
+    img: "mudblood.jpg"
   },
   {
     name: 'Porkchop',
@@ -13,7 +13,7 @@ const hogs = [
     greased: true,
     'weight': 1.6,
     'medal': 'silver',
-    img: "../hog-imgs/porkchop.jpg"
+    img: "porkchop.jpg"
   },
   {
     name: 'Cherub',
@@ -21,7 +21,7 @@ const hogs = [
     greased: false,
     'weight': 0.7,
     'medal': 'gold',
-    img: "../hog-imgs/cherub.jpg"
+    img: "cherub.jpg"
   },
   {
     name: 'Piggy smalls',
@@ -29,7 +29,7 @@ const hogs = [
     greased: true,
     'weight': 5.1,
     'medal': 'platinum',
-    img: "../hog-imgs/piggy_smalls.jpg"
+    img: "piggy_smalls.jpg"
   },
   {
     name: 'Trouble',
@@ -37,7 +37,7 @@ const hogs = [
     greased: true,
     'weight': 1.7,
     'medal': 'gold',
-    img: "../hog-imgs/trouble.jpg"
+    img: "trouble.jpg"
   },
   {
     name: 'Sobriety',
@@ -45,7 +45,7 @@ const hogs = [
     greased: false,
     'weight': 2.2,
     'medal': 'silver',
-    img: "../hog-imgs/sobriety.jpg"
+    img: "sobriety.jpg"
   },
   {
     name: 'Rainbowdash',
@@ -53,7 +53,7 @@ const hogs = [
     greased: false,
     'weight': 3.7,
     'medal': 'wood',
-    img: "../hog-imgs/rainbowdash.jpg"
+    img: "rainbowdash.jpg"
   },
   {
     name: 'TruffleShuffle',
@@ -61,7 +61,7 @@ const hogs = [
     greased: true,
     'weight': 4.0,
     'medal': 'gold',
-    img: "../hog-imgs/truffleshuffle.jpg"
+    img: "truffleshuffle.jpg"
   },
   {
     name: 'Bay of Pigs',
@@ -69,7 +69,7 @@ const hogs = [
     greased: false,
     'weight': 2.8,
     'medal': 'diamond',
-    img: "../hog-imgs/bay_of_pigs.jpg"
+    img: "bay_of_pigs.jpg"
   },
   {
     name: 'The Prosciutto Concern',
@@ -77,7 +77,7 @@ const hogs = [
     greased: false,
     'weight': 2.3,
     'medal': 'bronze',
-    img: "../hog-imgs/the_prosciutto_concern.jpg"
+    img: "the_prosciutto_concern.jpg"
   },
   {
     name: 'Galaxy Note',
@@ -85,7 +85,7 @@ const hogs = [
     greased: true,
     'weight': 1.9,
     'medal': 'diamond',
-    img: "../hog-imgs/galaxy_note.jpg"
+    img: "galaxy_note.jpg"
   },
   {
     name: 'Leggo My Eggo',
@@ -93,7 +93,7 @@ const hogs = [
     greased: true,
     'weight': 3.3,
     'medal': 'platinum',
-    img: "../hog-imgs/leggo_my_eggo.jpg"
+    img: "leggo_my_eggo.jpg"
   },
   {
     name: 'Augustus Gloop',
@@ -101,7 +101,7 @@ const hogs = [
     greased: true,
     'weight': 4.1,
     'medal': 'wood',
-    img: "../hog-imgs/augustus_gloop.jpg"
+    img: "augustus_gloop.jpg"
   }
 ];
 
