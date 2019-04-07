@@ -4,6 +4,7 @@ import Nav from './Nav'
 import Filter from './Filter'
 import HogList from './HogList'
 import hogs from '../porkers_data';
+import Test from './button'
 
 const API = "http://api.giphy.com/v1/gifs/search?q=pig&api_key=DttQ9wIBO32ilQGEZm3VafqaxTvOet6G&limit=13";
 
@@ -35,8 +36,9 @@ class App extends React.Component {
     componentDidMount() {
         fetch(API)
             .then(res => res.json())
-            .then(data => {
-                this.setState({ hogPics: data })
+            .then(gif => {
+                let selectedHogPics = gif.data.map((hog, i) => (true ? hog.images.downsized_medium.url.toString() : "Failure Loading"))
+                this.setState({ hogPics: selectedHogPics })
             })
     }
 
@@ -82,10 +84,12 @@ class App extends React.Component {
                 <Nav />
                 <Filter changeSort={this.changeSort} />
                 {this.renderDetails}
-                <HogList hogs={this.state.filteredHogs} hogPics={this.state.hogPics} renderDetails={this.renderDetails} />
+                <HogList hogs={this.state.filteredHogs} renderDetails={this.renderDetails} pics={this.state.hogPics} />
+                <Test />
             </div>
         )
     }
 }
 
 export default App;
+// hogPics = { this.state.hogPics }
