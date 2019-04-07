@@ -1,11 +1,27 @@
 import React from 'react';
 import HogDetails from './HogDetails'
+import { Card, Image, Button, Container, Header } from 'semantic-ui-react'
+
+//javascript, jQuery
+// const API = "http://api.giphy.com/v1/gifs/search?q=pig&api_key=DttQ9wIBO32ilQGEZm3VafqaxTvOet6G&limit=13";
+// xhr.done(function (data) { console.log("success got data", data); });
+
+// DttQ9wIBO32ilQGEZm3VafqaxTvOet6G
 
 class HogCard extends React.Component {
 
     state = {
         showDetails: false
+        // hogPic: []
     }
+
+    // componentDidMount() {
+    //     fetch(API)
+    //     .then(res => res.json())
+    //     .then(res => {
+    //         this.setState({ hogPic: res.data[0].images.downsized_medium.url.toString() }, () => {console.log(this.state.hogPic.data[0].images.downsized_medium.url.toString())})
+    //     })
+    // }
 
     getImage = () => {
         let formattedName = this.props.hog.name.split(" ").join("_").toLowerCase();
@@ -18,13 +34,14 @@ class HogCard extends React.Component {
     }
 
         render() {
+            console.log(this.state.hogPic)
             return (
                 <div>
-                    <div className="card ui eight wide column">
-                        <h2>{this.props.hog.name}</h2>
-                        <img className="card-hog-pic" alt="pic" src={this.getImage()} onClick={this.handleClick} />
-                        {this.state.showDetails ? <HogDetails hog={this.props.hog} /> : null}
-                    </div>
+                    <Card className="">
+                        <Card.Content><Card.Header><h2>{this.props.hog.name}</h2></Card.Header></Card.Content>
+                        <Image className="card-hog-pic" alt="pic" src={this.props.hogPic} onClick={this.handleClick} />
+                        {this.state.showDetails ? <Card.Content><HogDetails hog={this.props.hog} /></Card.Content> : null}
+                    </Card>
                 </div>
             )
         }
