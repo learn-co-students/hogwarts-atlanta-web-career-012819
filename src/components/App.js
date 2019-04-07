@@ -4,7 +4,6 @@ import Nav from './Nav'
 import Filter from './Filter'
 import HogList from './HogList'
 import hogs from '../porkers_data';
-import Test from './button'
 
 const API = "http://api.giphy.com/v1/gifs/search?q=pig&api_key=DttQ9wIBO32ilQGEZm3VafqaxTvOet6G&limit=13";
 
@@ -38,12 +37,15 @@ class App extends React.Component {
             .then(res => res.json())
             .then(gif => {
                 let selectedHogPics = gif.data.map((hog, i) => (true ? hog.images.downsized_medium.url.toString() : "Failure Loading"))
-                this.setState({ hogPics: selectedHogPics })
+                const hogsAddedData = this.state.hogs.map((hog, i) => ({ ...hog, image: selectedHogPics[i] }))
+                this.setState({ hogs: hogsAddedData, filteredHogs: hogsAddedData }, () => {console.log(this.state.hogs)})
+                // this.setState({ hogPics: selectedHogPics })
             })
     }
 
-    changeSort = (e) => {
-        let selected = e.target.value
+    changeSort = (value) => {
+        let selected = value
+        console.log(selected)
 
         if (selected === 'name') {
             let newHogs = [...this.state.hogs].sort((HogA, HogB) => {
@@ -85,7 +87,6 @@ class App extends React.Component {
                 <Filter changeSort={this.changeSort} />
                 {this.renderDetails}
                 <HogList hogs={this.state.filteredHogs} renderDetails={this.renderDetails} pics={this.state.hogPics} />
-                <Test />
             </div>
         )
     }
