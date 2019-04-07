@@ -28,8 +28,7 @@ class App extends React.Component {
 
     state = {
         hogs: hogs, 
-        filteredHogs: hogs,
-        hogPics: []
+        filteredHogs: hogs
     }
 
     componentDidMount() {
@@ -37,15 +36,22 @@ class App extends React.Component {
             .then(res => res.json())
             .then(gif => {
                 let selectedHogPics = gif.data.map((hog, i) => (true ? hog.images.downsized_medium.url.toString() : "Failure Loading"))
-                const hogsAddedData = this.state.hogs.map((hog, i) => ({ ...hog, image: selectedHogPics[i] }))
-                this.setState({ hogs: hogsAddedData, filteredHogs: hogsAddedData }, () => {console.log(this.state.hogs)})
-                // this.setState({ hogPics: selectedHogPics })
+                const hogsAddedData = this.state.hogs.map((hog, i) => ({ ...hog, image: selectedHogPics[i], hidden: false, id: i }))
+                this.setState({ hogs: hogsAddedData, filteredHogs: hogsAddedData }, () => { this.whatHappens()})
             })
+    }
+
+    whatHappens = () => {
+        console.log('Invoked')
+    }
+
+    hideHog = (hog) => {
+        let hiddenHogs = [...this.state.hogs].map((h) => (h.id === hog.id ? { ...h, hidden: true } : h ))
+        this.setState({ hogs: hiddenHogs, filteredHogs: hiddenHogs }, () => console.log("Hidden Hogs... ", hiddenHogs))
     }
 
     changeSort = (value) => {
         let selected = value
-        console.log(selected)
 
         if (selected === 'name') {
             let newHogs = [...this.state.hogs].sort((HogA, HogB) => {
@@ -80,17 +86,23 @@ class App extends React.Component {
         }
     }
 
+    // findHiddenPicsAfterSort = () => {
+    //     let sortedFilteredHidenHogs = [...this.state.filteredHogs].filter(hog => {
+    //         return !hog.hidden
+    //     })
+    //     this.setState({ filteredHogs: sortedFilteredHidenHogs }, () => console.log("Hidden & Sorted Hogs... ", sortedFilteredHidenHogs))
+    // }
+
     render() {
         return (
             <div className="App">
                 <Nav />
                 <Filter changeSort={this.changeSort} />
                 {this.renderDetails}
-                <HogList hogs={this.state.filteredHogs} renderDetails={this.renderDetails} pics={this.state.hogPics} />
+                <HogList hogs={this.state.filteredHogs} renderDetails={this.renderDetails} hideHog={this.hideHog} />
             </div>
         )
     }
 }
 
 export default App;
-// hogPics = { this.state.hogPics }

@@ -12,15 +12,15 @@ const Filter = (props) => {
     ]
     // onChange = { props.changeSort }
     let handleChange = (options, query) => {
-        console.log(query.value)
+        console.log("Sorting and Filtering Hogs by ", query.value)
         props.changeSort(query.value)
         
     }
 
     return (
-        <div className="ui search">
+        <div className="search-bar">
             <br />
-            <Dropdown placeholder='Filter Hogs By...' onChange={handleChange} compact search selection options={options} />
+            <Dropdown placeholder='Filter Hogs By...' onChange={handleChange} search selection options={options} />
             <br />
             <br />
             <br />

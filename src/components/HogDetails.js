@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
+import { Button } from 'semantic-ui-react'
 
 class HogDetails extends Component {
+
+    handleHide = (props) => {
+        console.log("You hid ", this.props.hog.name)
+        this.props.hideHog(this.props.hog)
+    }
 
     render() {
         console.log(this.props.hog)
@@ -12,7 +18,7 @@ class HogDetails extends Component {
                 <p>Weight Ratio: {weight}</p>
                 <p>{this.props.hog.greased ? "Hog is greased!" : "Hog is not greased!"}</p>
                 <p>Highest Medal Achieved: {medal}</p>
-                <button onClick={this.handleClickHide}>Hide Hog</button>
+                <Button onClick={this.handleHide}>Hide Hog</Button>
             </div>
         )
     }

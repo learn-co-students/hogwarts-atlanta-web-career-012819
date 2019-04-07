@@ -4,15 +4,25 @@ body {
   font-family: sans-serif;
 }
 
+.inline-block{
+    display: inline-grid;
+    margin: 1em 1em;
+    padding: 1em 1em;
+    box-shadow: 3px 4px 20px grey;
+    border: grey solid 1px;
+}
+
+.search-bar {
+    
+}
+
 /* .card {
   text-align: center;
-  border: grey solid 1px;
   padding: 1rem;
   width: 15rem;
   height: 31rem;
   display: inline-grid;
   margin: 1rem 2rem;
-  box-shadow: 3px 4px #e04b52
 }
 
 .container {

@@ -6,13 +6,16 @@ class HogList extends Component {
     
     renderHogs = () => {
         return this.props.hogs.map((hog, i) => {
-            return <HogCard key={hog.id} hog={hog} renderDetails={this.props.renderDetails} pics={this.props.pics[i]}/>
+            if (!hog.hidden) {
+                return <HogCard key={hog.id} hog={hog} renderDetails={this.props.renderDetails} hideHog={this.props.hideHog}/>
+            } else if (hog.hidden) {
+                return null
+            }
         })
     }
     
     
     render() {
-        console.log(this.props.pics[0])
         return (
             <div className="ui gird container">
                 {this.renderHogs()}
