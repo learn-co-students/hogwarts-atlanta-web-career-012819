@@ -5,11 +5,39 @@ import Filter from './Filter'
 import HogList from './HogList'
 import hogs from '../porkers_data';
 
+const API = "http://api.giphy.com/v1/gifs/search?q=pig&api_key=DttQ9wIBO32ilQGEZm3VafqaxTvOet6G&limit=13";
+
+    // componentDidMount() {
+    //     fetch(API)
+    //         .then(res => res.json())
+    //         .then(res => {
+    //             this.setState({ hogPics: res })
+    //         })
+    // }
+    // this.setState({ hogPic: res.data[0].images.downsized_medium.url.toString() }, () => { console.log(this.state.hogPic.data[0].images.downsized_medium.url.toString()) })
+
+
+    // renderHogs = () => {
+    //     return this.props.hogs.map((hog, i) => {
+    //         console.log(i)
+    //         return <HogCard key={hog.id} hog={hog} renderDetails={this.props.renderDetails} hogPic={this.state.hogPics.data[i].images.downsized_medium.url.toString()} />
+    //     })
+    // }
+
 class App extends React.Component {
 
     state = {
         hogs: hogs, 
-        filteredHogs: hogs
+        filteredHogs: hogs,
+        hogPics: []
+    }
+
+    componentDidMount() {
+        fetch(API)
+            .then(res => res.json())
+            .then(data => {
+                this.setState({ hogPics: data })
+            })
     }
 
     changeSort = (e) => {
@@ -54,7 +82,7 @@ class App extends React.Component {
                 <Nav />
                 <Filter changeSort={this.changeSort} />
                 {this.renderDetails}
-                <HogList hogs={this.state.filteredHogs} renderDetails={this.renderDetails} />
+                <HogList hogs={this.state.filteredHogs} hogPics={this.state.hogPics} renderDetails={this.renderDetails} />
             </div>
         )
     }
